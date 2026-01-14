@@ -1,0 +1,33 @@
+import type { Metadata } from 'next'
+import { Inter, Montserrat } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+export const metadata: Metadata = {
+  title: 'TexnoUsta - Сервис бытовой техники',
+  description: 'Профессиональный ремонт и обслуживание бытовой техники',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="ru">
+      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
+        {children}
+      </body>
+    </html>
+  )
+}
