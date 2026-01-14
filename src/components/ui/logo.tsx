@@ -21,7 +21,7 @@ export function Logo({
       className={`flex items-center gap-2 text-foreground font-extrabold tracking-tight transition-opacity hover:opacity-80 ${className || ''}`}
     >
       {showImage && imageUrl && (
-        <img src={imageUrl} alt="Logo" className="h-12 w-auto" />
+        <img src={imageUrl} alt="Logo" className="h-10 w-auto" />
       )}
       <span className="text-xl">{text}</span>
     </Link>

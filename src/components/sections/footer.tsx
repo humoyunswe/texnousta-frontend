@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Send } from "lucide-react"
-import { Logo } from "@/components/ui/logo"
+
 export function Footer() {
   const services = [
     { name: "Ремонт холодильников", href: "#" },
@@ -43,14 +43,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
-
-                <Logo 
-                                showImage={true} 
-                                imageUrl="/images/Logo-dark.svg" 
-                                text="texnousta.uz" 
-                                className="text-xl font-extrabold" 
-                />
-
+              <div className="flex items-center gap-2">
+                
+                <span className="text-xl font-bold text-gray-900 font-montserrat">
+                  texnousta.uz
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-gray-600 font-montserrat mb-6 leading-relaxed max-w-xs">
               Профессиональный ремонт бытовой техники в Ташкенте. Быстро, качественно, с гарантией.

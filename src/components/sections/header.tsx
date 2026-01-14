@@ -34,15 +34,13 @@ export function Header() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
             {/* Top row on mobile: Logo, Language, Menu Button */}
             <div className="flex items-center justify-between w-full md:w-auto">
-              {/* Logo */}
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#fa891a] to-[#e67b0f] flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">TU</span>
-                </div>
-                <span className="text-xl font-bold text-gray-900 font-montserrat">
-                  texnousta.uz
-                </span>
-              </div>
+              <Logo 
+                showImage={true} 
+                imageUrl="/images/Logo-dark.svg" 
+                text="texnousta.uz" 
+                className="text-xl font-extrabold" 
+              />
+          
 
               {/* Mobile: Language Switcher & Menu Button */}
               <div className="flex md:hidden items-center gap-2">
