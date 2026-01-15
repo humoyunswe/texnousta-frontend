@@ -29,7 +29,7 @@ export function ServiceAreaSection() {
           <span className="text-[#fa891a] text-xs font-semibold tracking-widest uppercase font-montserrat mb-3 block">
             ГЕОГРАФИЯ РАБОТЫ
           </span>
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3 font-montserrat leading-tight">t">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3 font-montserrat leading-tight">
             Работаем по всему Ташкенту и области
           </h2>
           <p className="text-sm leading-relaxed font-normal text-gray-600 font-montserrat">

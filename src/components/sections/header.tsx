@@ -36,7 +36,7 @@ export function Header() {
             <div className="flex items-center justify-between w-full md:w-auto">
               <Logo 
                 showImage={true} 
-                imageUrl="/images/Logo-dark.svg" 
+                imageUrl="/images/Logo-orange.svg" 
                 text="texnousta.uz" 
                 className="text-xl font-extrabold" 
               />
@@ -55,17 +55,21 @@ export function Header() {
             </div>
 
             {/* Phone Number & 24/7 - visible on mobile below logo */}
-            <div className="flex md:hidden items-center gap-1.5 w-full justify-center pb-1">
-              <Phone className="h-4 w-4 text-accent" />
+            <div className="flex md:hidden items-center gap-2 w-full justify-center pb-1">
               <a
                 href="tel:+998935960055"
-                className="text-foreground text-sm font-bold hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[#fa891a] rounded-lg bg-white hover:bg-[#fa891a]/5 transition-all group"
               >
-                +998 93 596 00 55
+                <div className="w-8 h-8 bg-[#fa891a] flex items-center justify-center rounded">
+                  <Phone className="h-4 w-4 text-white" />
+                </div>
+                <span className="text-[#fa891a] text-sm font-bold font-montserrat tracking-wide">
+                  +998 93 596 00 55
+                </span>
               </a>
-              <div className="flex items-center gap-0.5 ml-1.5 bg-brand-green-bg px-2 py-0.5 rounded-full">
-                <Clock className="h-3 w-3 text-brand-green" />
-                <span className="text-xs font-bold text-brand-green">24/7</span>
+              <div className="flex items-center gap-0.5 ml-1 bg-green-50 px-2 py-0.5 rounded-full border border-green-200">
+                <Clock className="h-3 w-3 text-green-600" />
+                <span className="text-xs font-bold text-green-600">24/7</span>
               </div>
             </div>
 
@@ -118,17 +122,21 @@ export function Header() {
               </div>
 
               {/* Phone Number & 24/7 */}
-              <div className="flex items-center gap-2 border-l border-border pl-6">
-                <Phone className="h-4 w-4 text-accent" />
+              <div className="flex items-center gap-3">
                 <a
                   href="tel:+998935960055"
-                  className="text-foreground text-sm font-bold hover:text-accent transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[#fa891a] rounded-lg bg-white hover:bg-[#fa891a]/5 transition-all group"
                 >
-                  +998 93 596 00 55
+                  <div className="w-8 h-8 bg-[#fa891a] flex items-center justify-center rounded">
+                    <Phone className="h-4 w-4 text-white" />
+                  </div>
+                  <span className="text-[#fa891a] text-sm font-bold font-montserrat tracking-wide">
+                    +998 93 596 00 55
+                  </span>
                 </a>
-                <div className="flex items-center gap-1 ml-2 bg-brand-green-bg px-2 py-1 rounded-full">
-                  <Clock className="h-3 w-3 text-brand-green" />
-                  <span className="text-xs font-bold text-brand-green">24/7</span>
+                <div className="flex items-center gap-1 bg-green-50 px-2 py-1 rounded-full border border-green-200">
+                  <Clock className="h-3 w-3 text-green-600" />
+                  <span className="text-xs font-bold text-green-600">24/7</span>
                 </div>
               </div>
 
