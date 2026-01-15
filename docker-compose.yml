@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  texnousta-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    container_name: texnousta-app
+    # Увеличиваем лимиты памяти
+    mem_limit: 2g
+    memswap_limit: 2g
