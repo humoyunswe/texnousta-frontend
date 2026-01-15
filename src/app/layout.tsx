@@ -16,6 +16,10 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'TexnoUsta - Сервис бытовой техники',
   description: 'Профессиональный ремонт и обслуживание бытовой техники',
+  icons: {
+    icon: '/images/Logo-orange.svg',
+    apple: '/images/Logo-orange.svg',
+  },
 }
 
 export default function RootLayout({

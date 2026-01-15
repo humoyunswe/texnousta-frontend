@@ -1,136 +1,177 @@
-"use client"
+/* ============================================================
+   HERO SECTION
+   Premium monochrome hero with elegant animations.
+   Full-screen impact, refined typography, smooth reveals.
+   ============================================================ */
+"use client";
 
-import { useState, useEffect } from "react"
+
+import { useState } from "react";
+import { motion, Variants } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
+
+/* Animation variants */
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+};
 
 export function HeroSection() {
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  
-  const images = [
-    '/home/image copy.png',
-    '/home/image.png',
-    '/home/washing-machine.png',
-    '/home/air-conditioner.png',
-    '/home/washin-disher.png',
-    '/home/boiler.png',
-    '/home/home-appliances-small.png',
-    '/home/chiller.png'
-  
-  ]
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 5000) // Меняем изображение каждые 5 секунд
-    
-    return () => clearInterval(interval)
-  }, [])
-  
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  /* Form submission handler */
   const handlePhoneSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Номер телефона:", phoneNumber)
-  }
+    e.preventDefault();
+    console.log("Phone number submitted:", phoneNumber);
+    /* TODO: Integrate with backend */
+  };
 
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-0">
+      {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
-        <div 
-          className="w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('${images[currentImageIndex]}')`,
-          }}
+        <img
+          src="/images/hero/image copy.png"
+          alt="Premium appliance repair"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Gradient overlay for text readability - lighter and brighter */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/50 to-white/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
       </div>
-      
-      {/* Content */}
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Content wrapper with background for mobile */}
-        <div className="md:bg-transparent bg-black/30 md:backdrop-blur-none backdrop-blur-sm rounded-2xl md:p-0 p-4">
-          {/* Small label above title */}
-          <div className="max-w-4xl mx-auto mb-4">
-            <div className="inline-block bg-[#fa891a]/90 backdrop-blur-sm px-4 py-1.5 rounded-full">
-              <p className="text-white text-sm font-semibold">
-                Выезд мастера в день обращения
-              </p>
-            </div>
-          </div>
 
-          {/* Main Title */}
-          <div className="max-w-4xl mx-auto mb-4">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight font-montserrat mb-3 drop-shadow-lg">
-              Ремонт бытовой техники в Ташкенте и области
-            </h1>
-            <p className="text-xl md:text-xl lg:text-2xl text-[#fefefe] font-semibold drop-shadow-lg">
-              Быстро. Честно. С гарантией
-            </p>
-          </div>
+      {/* Content Container */}
+      <div className="container relative z-10 mx-auto px-6 py-32 md:py-40">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-3xl"
+        >
+          {/* Badge - Premium label */}
+          <motion.div variants={itemVariants} className="mb-8">
+            <span className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-caption font-semibold tracking-wide uppercase rounded-full">
+              Выезд в день обращения
+            </span>
+          </motion.div>
 
-          {/* Description */}
-          <div className="max-w-4xl mx-auto mb-6">
-            <p className="text-lg md:text-lg text-gray-100 leading-relaxed mb-4 drop-shadow-md">
-              Стиральные машины, холодильники, кондиционеры, посудомоечные машины и другая техника — ремонт на дому или в сервисе.
-            </p>
-            
-            {/* Features */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                <span className="text-white text-base font-medium drop-shadow-md">Опытные мастера</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                <span className="text-white text-base font-medium drop-shadow-md">Честная диагностика</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                <span className="text-white text-base font-medium drop-shadow-md">Гарантия на работы</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                <span className="text-white text-base font-medium drop-shadow-md">Ташкент и область</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          {/* Main Headline - Impactful typography */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+          >
+            Ремонт бытовой<br />
+            техники
+          </motion.h1>
 
-        {/* Phone Form */}
-        <div className="max-w-2xl mx-auto mt-8">
-          <div className="flex flex-col sm:flex-row gap-2 items-stretch">
-            {/* Phone Input with Flag */}
-            <div className="flex-1 bg-white rounded-full shadow-lg px-4 py-3 flex items-center gap-2">
-              <div className="flex items-center gap-1.5 border-r border-gray-300 pr-2">
-                <div className="w-5 h-5 rounded-full overflow-hidden flex-shrink-0">
-                  🇺🇿
-                </div>
-                <span className="text-gray-600 font-medium text-xs">+998</span>
-              </div>
-              <input
-                type="tel"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                placeholder="00-000-0000"
-                className="flex-1 text-gray-800 placeholder-gray-400 focus:outline-none text-sm"
-              />
-            </div>
+          {/* Subheadline - Clean and clear */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-medium text-foreground/80 mb-4"
+          >
+            Ташкент и область
+          </motion.p>
 
-            {/* Submit Button */}
-            <button
-              onClick={handlePhoneSubmit}
-              className="bg-[#234c6a] hover:bg-[#1a3a52] text-white font-semibold px-5 py-3 rounded-full shadow-lg transition-colors whitespace-nowrap text-sm"
+          {/* Value proposition */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-1xl md:text-2xl text-white mb-3 max-w-fit bg-[#234c6a] px-4 py-2 rounded-lg"
+          >
+            Быстро. Честно.
+          </motion.p>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-1xl md:text-2xl text-white mb-12 max-w-fit bg-[#234c6a] px-4 py-2 rounded-lg"
+          >
+            С гарантией на все работы.
+          </motion.p>
+
+          {/* Feature Pills - Minimal indicators */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-wrap gap-4 mb-12"
+          >
+            {[
+              "Опытные мастера",
+              "Честная диагностика",
+              "Гарантия на работы",
+              "24/7 поддержка",
+            ].map((feature) => (
+              <span
+                key={feature}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-2xl md:text-2xl text-body-sm rounded-full"
+              >
+                <span className="w-1.5 h-1.5 bg-foreground rounded-full" />
+                {feature}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 max-w-2xl"
+          >
+            {/* Call Button */}
+            <a
+              href="tel:+998935960055"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
             >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
               Вызвать мастера сейчас
-            </button>
-            <button
-              onClick={handlePhoneSubmit}
-              className="bg-white hover:bg-gray-50 text-[#234c6a] font-semibold px-5 py-3 rounded-full shadow-lg transition-colors whitespace-nowrap text-sm"
+            </a>
+
+            {/* Form Link Button */}
+            <a
+              href="#service-area-form"
+              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg border-2 border-gray-900"
             >
               Бесплатная консультация
-            </button>
-          </div>
-        </div>
+              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </motion.div>
+
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-2">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1 h-2 bg-muted-foreground/50 rounded-full"
+          />
+        </div>
+      </motion.div>
     </section>
-  )
+  );
 }

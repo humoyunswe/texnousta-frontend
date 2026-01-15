@@ -1,103 +1,174 @@
-"use client"
+/* ============================================================
+   HOW WE WORK SECTION
+   Clean process visualization with numbered steps.
+   Premium animations and refined typography.
+   ============================================================ */
 
-import { Phone, MessageCircle, Clock, Wrench, CheckCircle } from "lucide-react"
+"use client";
+
+import { motion, Variants } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Phone, MessageCircle, Clock, Wrench, CheckCircle, ArrowRight } from "lucide-react";
+
+/* Steps data */
+const steps = [
+  {
+    icon: Phone,
+    title: "Оставляете заявку",
+    description: "Звонок или форма на сайте",
+  },
+  {
+    icon: MessageCircle,
+    title: "Консультация",
+    description: "Уточняем проблему по телефону",
+  },
+  {
+    icon: Clock,
+    title: "Приезд мастера",
+    description: "В удобное для вас время",
+  },
+  {
+    icon: Wrench,
+    title: "Диагностика",
+    description: "Определяем причину и стоимость",
+  },
+  {
+    icon: CheckCircle,
+    title: "Ремонт и гарантия",
+    description: "Качественно и с ответственностью",
+  },
+];
+
+/* Animation variants */
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 
 export function HowWeWorkSection() {
-  const steps = [
-    {
-      icon: Phone,
-      title: "Вы оставляете заявку или звоните",
-      description: "Быстрый контакт любым удобным способом"
-    },
-    {
-      icon: MessageCircle,
-      title: "Мы консультируем и уточняем проблему",
-      description: "Предварительная диагностика по телефону"
-    },
-    {
-      icon: Clock,
-      title: "Мастер приезжает в удобное время",
-      description: "Согласуем время с вашим графиком"
-    },
-    {
-      icon: Wrench,
-      title: "Проводим диагностику",
-      description: "Определяем точную причину и стоимость"
-    },
-    {
-      icon: CheckCircle,
-      title: "Ремонтируем и даём гарантию",
-      description: "Качественно и с ответственностью"
-    }
-  ]
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-12 md:py-16 bg-white overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-[#fa891a] text-xs font-semibold tracking-widest uppercase font-montserrat mb-3 block">
-            ПРОЦЕСС РАБОТЫ
-          </span>
-          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3 font-montserrat leading-tight">
-            Как мы работаем?
+    <section 
+      id="how-it-works" 
+      className="py-12 md:py-16 bg-background" 
+      ref={ref}
+    >
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <p className="text-sm text-gray-600 uppercase tracking-widest mb-3">
+            ПРОЦЕСС
+          </p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Как мы работаем
           </h2>
-          <p className="text-sm leading-relaxed font-normal text-gray-600 font-montserrat max-w-2xl mx-auto">
+          <p className="text-body-lg text-muted-foreground">
             Без лишних слов. Без потери времени.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Steps */}
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <div key={index} className="relative group">
-                  <div className="text-center">
-                    {/* Icon Circle */}
-                    <div className="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#fa891a] to-[#e67b0f] mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-6 h-6 text-white" strokeWidth={2} />
-                      {/* Step Number */}
-                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#234c6a] flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">{index + 1}</span>
+        {/* Steps Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4"
+        >
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            const isLast = index === steps.length - 1;
+            
+            return (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative text-center lg:text-left"
+              >
+                {/* Step Number & Icon */}
+                <div className="flex flex-col items-center lg:items-start mb-6">
+                  {/* Number Badge */}
+                  <div className="relative mb-4">
+                    <div className="w-16 h-16 flex items-center justify-center bg-secondary rounded-2xl">
+                      <Icon className="w-7 h-7 text-foreground" strokeWidth={1.5} />
+                    </div>
+                    {/* Step number */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center bg-foreground text-background text-caption font-semibold rounded-full">
+                      {index + 1}
+                    </div>
+                  </div>
+
+                  {/* Arrow connector (hidden on mobile, last item) */}
+                  {!isLast && (
+                    <div className="hidden lg:block absolute top-8 left-full w-full">
+                      <div className="flex items-center justify-center w-full px-2">
+                        <div className="flex-1 h-px bg-border" />
+                        <ArrowRight className="w-4 h-4 text-muted-foreground mx-1" />
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <h3 className="text-sm font-semibold text-gray-900 mb-1 font-montserrat leading-snug">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs leading-relaxed font-normal text-gray-600 font-montserrat">
-                      {step.description}
-                    </p>
-                  </div>
+                  )}
                 </div>
-              )
-            })}
-          </div>
-        </div>
+
+                {/* Content */}
+                <h3 className="text-heading-sm font-semibold text-foreground mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-body-sm text-muted-foreground">
+                  {step.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
         {/* Bottom CTA */}
-        <div className="mt-10 text-center">
-          <div className="inline-flex flex-col sm:flex-row gap-3">
-            <a
-              href="tel:+998935960055"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#fa891a] text-white text-sm font-semibold rounded-full hover:bg-[#e67b0f] transition-all duration-300 font-montserrat"
-            >
-              <Phone className="w-4 h-4" />
-              Вызвать мастера
-            </a>
-            <a
-              href="tel:+998935960055"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-[#234c6a] text-[#234c6a] text-sm font-semibold rounded-full hover:bg-[#234c6a] hover:text-white transition-all duration-300 font-montserrat"
-            >
-              <MessageCircle className="w-4 h-4" />
-              Получить консультацию
-            </a>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-16"
+        >
+          <a
+            href="tel:+998935960055"
+            className="group flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full text-body-md font-medium hover:opacity-90 transition-opacity premium-press"
+          >
+            <Phone className="w-4 h-4" />
+            Вызвать мастера
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </a>
+          <a
+            href="tel:+998935960055"
+            className="flex items-center gap-2 px-8 py-4 bg-card border border-border text-foreground rounded-full text-body-md font-medium hover:bg-secondary transition-colors premium-press"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Получить консультацию
+          </a>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }

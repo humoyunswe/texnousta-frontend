@@ -13,8 +13,6 @@ export default function HomePage() {
   return (
     <main className="min-h-screen">
       <Header />
-      {/* Spacer for fixed header */}
-      <div className="h-[88px] md:h-[72px]" />
       <HeroSection />
       <WhatWeRepairSection />
       <WhyChooseUsSection />
