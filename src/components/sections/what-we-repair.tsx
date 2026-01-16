@@ -10,45 +10,53 @@ import { motion, Variants } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 /* Service item type */
 interface Service {
   title: string;
   image: string;
   description: string;
+  href: string;
 }
 
 /* Services data */
 const services: Service[] = [
   {
     title: "Стиральные машины",
-    image: "/images/services/washing-machine.png",
+    image: "/images/services/washing-machine2.png",
     description: "Любые модели и бренды",
+    href: "/services/washing-machines",
   },
   {
     title: "Холодильники и морозильники",
-    image: "/images/services/refrigerator.png",
+    image: "/images/services/refrigerator2.png",
     description: "Диагностика и ремонт",
+    href: "/services/refrigerators",
   },
   {
     title: "Кондиционеры и сплит-системы",
-    image: "/images/services/air-conditioner.png",
+    image: "/images/services/air-conditioner2.png",
     description: "Заправка и обслуживание",
+    href: "/services/air-conditioners",
   },
   {
     title: "Посудомоечные машины",
-    image: "/images/services/dishwasher.png",
+    image: "/images/services/oven2.png",
     description: "Все виды неисправностей",
+    href: "/services/dishwashers",
   },
   {
     title: "Плиты и духовки",
-    image: "/images/services/oven.png",
+    image: "/images/services/image copy.png",
     description: "Газовые и электрические",
+    href: "/services/ovens",
   },
   {
     title: "Мелкая техника",
     image: "/images/services/small-app.png",
     description: "Пылесосы, кофемашины и др.",
+    href: "/services/small-appliances",
   },
 ];
 
@@ -109,54 +117,55 @@ export function WhatWeRepairSection() {
         >
           {services.map((service) => {
             return (
-              <motion.div
-                key={service.title}
-                variants={itemVariants}
-                className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
-              >
-                {/* Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                </div>
-
-                {/* Content */}
-                <div className="relative p-6 bg-white">
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-600">
-                    {service.description}
-                  </p>
-
-                  {/* Hover Indicator */}
-                  <div className="absolute bottom-6 right-6 w-10 h-10 flex items-center justify-center bg-gray-900 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 16 16" 
-                      fill="none" 
-                      className="text-white"
-                    >
-                      <path 
-                        d="M1 15L15 1M15 1H4M15 1V12" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+              <Link key={service.title} href={service.href}>
+                <motion.div
+                  variants={itemVariants}
+                  className="group relative overflow-hidden bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                >
+                  {/* Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   </div>
-                </div>
-              </motion.div>
+
+                  {/* Content */}
+                  <div className="relative p-6 bg-white">
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {service.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-600">
+                      {service.description}
+                    </p>
+
+                    {/* Hover Indicator */}
+                    <div className="absolute bottom-6 right-6 w-10 h-10 flex items-center justify-center bg-gray-900 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <svg 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 16 16" 
+                        fill="none" 
+                        className="text-white"
+                      >
+                        <path 
+                          d="M1 15L15 1M15 1H4M15 1V12" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             );
           })}
         </motion.div>

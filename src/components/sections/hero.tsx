@@ -34,8 +34,29 @@ const itemVariants: Variants = {
   },
 };
 
-export function HeroSection() {
+interface HeroData {
+  badge?: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image?: string;
+}
+
+interface HeroSectionProps {
+  data?: HeroData;
+}
+
+export function HeroSection({ data }: HeroSectionProps = {}) {
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  // Default data if none provided
+  const heroData = data || {
+    badge: "Выезд мастера в день обращения",
+    title: "Ремонт бытовой техники в Ташкенте и области",
+    subtitle: "Быстро. Честно. С гарантией",
+    description: "Стиральные машины, холодильники, кондиционеры, посудомоечные машины и другая техника — ремонт на дому или в сервисе.",
+    image: "/images/hero/all-appliances.png"
+  };
 
   /* Form submission handler */
   const handlePhoneSubmit = (e: React.FormEvent) => {
@@ -49,7 +70,7 @@ export function HeroSection() {
       {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero/image copy.png"
+          src={heroData.image}
           alt="Premium appliance repair"
           className="w-full h-full object-cover"
         />
@@ -69,7 +90,7 @@ export function HeroSection() {
           {/* Badge - Premium label */}
           <motion.div variants={itemVariants} className="mb-8">
             <span className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-caption font-semibold tracking-wide uppercase rounded-full">
-              Выезд в день обращения
+              {heroData.badge || "Выезд мастера в день обращения"}
             </span>
           </motion.div>
 
@@ -78,32 +99,28 @@ export function HeroSection() {
             variants={itemVariants}
             className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
           >
-            Ремонт бытовой<br />
-            техники
+            {heroData.title}
           </motion.h1>
 
           {/* Subheadline - Clean and clear */}
           <motion.p 
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-medium text-foreground/80 mb-4"
+            className="text-2xl md:text-3xl font-medium mb-8 flex flex-wrap gap-2"
           >
-            Ташкент и область
+            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">Быстро.</span>
+            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">Честно.</span>
+            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">С гарантией</span>
           </motion.p>
 
           {/* Value proposition */}
           <motion.p 
             variants={itemVariants}
-            className="text-1xl md:text-2xl text-white mb-3 max-w-fit bg-[#234c6a] px-4 py-2 rounded-lg"
+            className="text-lg md:text-xl text-foreground mb-12 max-w-2xl leading-relaxed"
           >
-            Быстро. Честно.
+            {heroData.description}
           </motion.p>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-1xl md:text-2xl text-white mb-12 max-w-fit bg-[#234c6a] px-4 py-2 rounded-lg"
-          >
-            С гарантией на все работы.
-          </motion.p>
+          
 
           {/* Feature Pills - Minimal indicators */}
           <motion.div 
@@ -114,11 +131,11 @@ export function HeroSection() {
               "Опытные мастера",
               "Честная диагностика",
               "Гарантия на работы",
-              "24/7 поддержка",
+              "Ташкент и Ташкентская область",
             ].map((feature) => (
               <span
                 key={feature}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-2xl md:text-2xl text-body-sm rounded-full"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-sm md:text-base rounded-full"
               >
                 <span className="w-1.5 h-1.5 bg-foreground rounded-full" />
                 {feature}
