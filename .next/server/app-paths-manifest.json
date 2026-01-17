@@ -1,12 +1,18 @@
 {
-  "/auth/page": "app/auth/page.js",
-  "/services/washing-machines/page": "app/services/washing-machines/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/admin/users/page": "app/admin/users/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/admin/services/page": "app/admin/services/page.js",
-  "/admin/requests/page": "app/admin/requests/page.js",
+  "/auth/page": "app/auth/page.js",
+  "/services/dishwashers/page": "app/services/dishwashers/page.js",
+  "/services/ovens/page": "app/services/ovens/page.js",
+  "/services/small-appliances/page": "app/services/small-appliances/page.js",
+  "/services/air-conditioners/page": "app/services/air-conditioners/page.js",
+  "/services/refrigerators/page": "app/services/refrigerators/page.js",
+  "/services/washing-machines/page": "app/services/washing-machines/page.js",
   "/admin/analytics/page": "app/admin/analytics/page.js",
+  "/admin/page": "app/admin/page.js",
   "/admin/settings/page": "app/admin/settings/page.js",
-  "/admin/phones/page": "app/admin/phones/page.js"
+  "/admin/phones/page": "app/admin/phones/page.js",
+  "/admin/users/page": "app/admin/users/page.js",
+  "/admin/services/page": "app/admin/services/page.js",
+  "/admin/requests/page": "app/admin/requests/page.js"
 }
