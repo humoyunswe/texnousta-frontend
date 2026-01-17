@@ -53,7 +53,15 @@ const steps = [
   },
 ];
 
-export function HowToOrderSection() {
+interface HowToOrderSectionProps {
+  applianceType?: string;
+  applianceTypeGenitive?: string;
+}
+
+export function HowToOrderSection({ 
+  applianceType = "стиральной машины",
+  applianceTypeGenitive = "стиральных машин"
+}: HowToOrderSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -70,7 +78,7 @@ export function HowToOrderSection() {
             ПРОЦЕСС
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6">
-            Как заказать ремонт стиральной машины в Ташкенте
+            Как заказать ремонт {applianceType} в Ташкенте
           </h2>
           <p className="text-lg text-muted-foreground">
             Простой и понятный процесс от заявки до результата
@@ -126,7 +134,7 @@ export function HowToOrderSection() {
             Не откладывайте ремонт
           </h3>
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Мелкая неисправность сегодня — <span className="font-bold text-foreground">дорогая поломка завтра</span>. <span className="font-bold text-foreground">TexnoUsta</span> — ремонт стиральных машин в Ташкенте, которому доверяют.
+            Мелкая неисправность сегодня — <span className="font-bold text-foreground">дорогая поломка завтра</span>. <span className="font-bold text-grey-600">texnousta.uz</span> — ремонт {applianceTypeGenitive} в Ташкенте, которому доверяют.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a

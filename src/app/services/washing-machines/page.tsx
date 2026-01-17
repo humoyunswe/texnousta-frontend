@@ -64,7 +64,7 @@ export default function WashingMachinesPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <ServiceHero {...washingMachineData.hero} />
+      <ServiceHero {...washingMachineData.hero} applianceTypeGenitive="стиральных машин" />
       <WhyUsService />
       <HomeRepairSection />
       <WhatWeRepairPricing />

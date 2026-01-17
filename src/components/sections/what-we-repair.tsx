@@ -24,7 +24,7 @@ interface Service {
 const services: Service[] = [
   {
     title: "Стиральные машины",
-    image: "/images/services/washing-machine2.png",
+    image: "/home/washing-machine.png",
     description: "Любые модели и бренды",
     href: "/services/washing-machines",
   },
@@ -42,7 +42,7 @@ const services: Service[] = [
   },
   {
     title: "Посудомоечные машины",
-    image: "/images/services/oven2.png",
+    image: "/home/washin-disher.png",
     description: "Все виды неисправностей",
     href: "/services/dishwashers",
   },

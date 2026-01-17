@@ -1,38 +1,91 @@
+'use client'
+
 import { Header } from "@/components/sections/header"
-import { HeroSection } from "@/components/sections/hero"
-import { WhatWeRepairSection } from "@/components/sections/what-we-repair"
-import { WhyChooseUsSection } from "@/components/sections/why-choose-us"
-import { HowWeWorkSection } from "@/components/sections/how-we-work"
+import { ServiceHero } from "@/components/service-sections/service-hero"
+import { WhyUsService } from "@/components/service-sections/why-us-service"
+import { HomeRepairSection } from "@/components/service-sections/home-repair-section"
+import { WhatWeRepairPricing } from "@/components/service-sections/what-we-repair-pricing"
+import { HowToOrderSection } from "@/components/service-sections/how-to-order"
 import { ServiceAreaSection } from "@/components/sections/service-area"
-import { TestimonialsSection } from "@/components/sections/testimonials"
-import { FAQSection } from "@/components/sections/faq"
+import { ServiceFAQ } from "@/components/service-sections/service-faq"
 import { CTASection } from "@/components/sections/cta"
 import { Footer } from "@/components/sections/footer"
+import { 
+  Flame, 
+  Thermometer, 
+  AlertCircle,
+  Zap,
+  Timer,
+  Wind
+} from "lucide-react"
 
-export const metadata = {
-  title: 'Ремонт плит и духовок в Ташкенте | TexnoUsta',
-  description: 'Ремонт газовых и электрических плит, духовых шкафов. Замена горелок, термостатов, ремонт электроники.',
+const ovenData = {
+  hero: {
+    badge: "Ремонт за 1 день",
+    title: "Ремонт плит и духовок<br />в Ташкенте",
+    subtitle: "Быстро. Надёжно. С гарантией",
+    description: "Ремонт газовых и электрических плит, духовых шкафов всех марок.",
+    image: "/images/hero/oven.png",
+    problems: [
+      { icon: Flame, text: "Не зажигается газ или горелка" },
+      { icon: Thermometer, text: "Духовка не нагревается" },
+      { icon: Zap, text: "Не включается" },
+      { icon: Timer, text: "Не работает таймер или часы" },
+      { icon: Wind, text: "Не работает конвекция" },
+      { icon: AlertCircle, text: "Ошибка на дисплее" },
+    ]
+  },
+  types: [
+    "Газовые и электрические плиты",
+    "Духовые шкафы (встраиваемые)",
+    "Варочные поверхности",
+    "Все бренды: Bosch, Electrolux, Ariston, Gefest, Gorenje",
+  ],
+  faqs: [
+    { 
+      question: "Сколько стоит ремонт плиты или духовки?", 
+      answer: "Стоимость зависит от типа поломки и модели. Диагностика бесплатная, цену назовём после осмотра." 
+    },
+    { 
+      question: "Вы работаете с газовым оборудованием?", 
+      answer: "Да, наши мастера имеют допуск к работе с газовым оборудованием. Ремонтируем газовые плиты и духовки." 
+    },
+    { 
+      question: "Можете заменить горелки или переключатели?", 
+      answer: "Да, заменяем горелки, переключатели, термостаты и другие компоненты. Используем оригинальные запчасти." 
+    },
+    { 
+      question: "Даёте гарантию?", 
+      answer: "Да, на все работы предоставляется гарантия до 12 месяцев." 
+    },
+    { 
+      question: "Как быстро приедет мастер?", 
+      answer: "Обычно в день обращения. По Ташкенту — в течение 1-2 часов." 
+    },
+  ]
 }
 
 export default function OvensPage() {
-  const heroData = {
-    badge: "Ремонт плит и духовок",
-    title: "Ремонт плит и духовок",
-    subtitle: "Газовые и электрические",
-    description: "Профессиональный ремонт газовых и электрических плит, духовых шкафов всех марок. Замена горелок, термостатов, ремонт поверхности. Опытные мастера.",
-    image: "/images/hero/oven.png"
-  }
-
   return (
     <main className="min-h-screen">
       <Header />
-      <HeroSection data={heroData} />
-      <WhatWeRepairSection />
-      <WhyChooseUsSection />
-      <HowWeWorkSection />
+      <ServiceHero {...ovenData.hero} applianceTypeGenitive="плит и духовок" />
+      <WhyUsService />
+      <HomeRepairSection 
+        image="/images/hero/oven.png"
+        title="Ремонт плит и духовок на дому"
+        altText="Ремонт плиты и духовки на дому"
+      />
+      <WhatWeRepairPricing 
+        types={ovenData.types}
+        title="Какие плиты и духовки мы ремонтируем"
+      />
+      <HowToOrderSection 
+        applianceType="плиты или духовки"
+        applianceTypeGenitive="плит и духовок"
+      />
       <ServiceAreaSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <ServiceFAQ faqs={ovenData.faqs} />
       <CTASection />
       <Footer />
     </main>

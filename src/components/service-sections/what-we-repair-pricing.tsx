@@ -11,6 +11,7 @@ import { Check } from "lucide-react";
 interface WhatWeRepairPricingProps {
   types?: string[];
   priceFactors?: string[];
+  title?: string;
 }
 
 const defaultTypes = [
@@ -28,7 +29,8 @@ const defaultPriceFactors = [
 
 export function WhatWeRepairPricing({ 
   types = defaultTypes,
-  priceFactors = defaultPriceFactors 
+  priceFactors = defaultPriceFactors,
+  title = "Какие стиральные машины мы ремонтируем"
 }: WhatWeRepairPricingProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -47,7 +49,7 @@ export function WhatWeRepairPricing({
               ТИПЫ МАШИН
             </p>
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-8">
-              Какие стиральные машины мы ремонтируем
+              {title}
             </h2>
             <div className="space-y-4">
               {types.map((type, index) => (

@@ -25,7 +25,7 @@ const refrigeratorData = {
     title: "Ремонт холодильников<br />в Ташкенте",
     subtitle: "Быстро. Надёжно. С гарантией",
     description: "Когда холодильник выходит из строя — важно одно: чтобы его починили с первого раза.",
-    image: "/images/hero/refrigerator.png",
+    image: "/images/hero/refrigerator2.png",
     problems: [
       { icon: Snowflake, text: "Не морозит или плохо холодит" },
       { icon: Droplets, text: "Течёт вода внутри или снаружи" },
@@ -69,11 +69,21 @@ export default function RefrigeratorsPage() {
   return (
     <main className="min-h-screen">
       <Header />
-      <ServiceHero {...refrigeratorData.hero} />
+      <ServiceHero {...refrigeratorData.hero} applianceTypeGenitive="холодильников" />
       <WhyUsService />
-      <HomeRepairSection image="/images/services/refrigerator-home.jpg" />
-      <WhatWeRepairPricing types={refrigeratorData.types} />
-      <HowToOrderSection />
+      <HomeRepairSection 
+        image="/images/hero/refrigerator.png"
+        title="Ремонт холодильников на дому"
+        altText="Ремонт холодильника на дому"
+      />
+      <WhatWeRepairPricing 
+        types={refrigeratorData.types}
+        title="Какие холодильники мы ремонтируем"
+      />
+      <HowToOrderSection 
+        applianceType="холодильника"
+        applianceTypeGenitive="холодильников"
+      />
       <ServiceAreaSection />
       <ServiceFAQ faqs={refrigeratorData.faqs} />
       <CTASection />

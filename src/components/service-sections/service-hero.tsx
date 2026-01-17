@@ -20,6 +20,7 @@ interface ServiceHeroProps {
   description: string;
   image: string;
   problems: Problem[];
+  applianceTypeGenitive?: string;
 }
 
 /* Animation variants */
@@ -50,6 +51,7 @@ export function ServiceHero({
   description,
   image,
   problems,
+  applianceTypeGenitive = "бытовой техники",
 }: ServiceHeroProps) {
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -60,15 +62,16 @@ export function ServiceHero({
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-28">
-      {/* Background Image */}
+      {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
         <img
           src={image}
           alt="Service"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        {/* Gradient overlay for text readability - lighter and brighter */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/50 to-white/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
@@ -116,7 +119,7 @@ export function ServiceHero({
             variants={itemVariants}
             className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
           >
-            <span className="font-bold text-foreground">texnousta.uz</span> — это профессиональный ремонт стиральных машин в Ташкенте <span className="font-bold text-foreground">на дому</span>, без лишних слов, затягиваний и навязанных услуг. Мы приезжаем, <span className="font-bold text-foreground">находим реальную причину поломки</span> и устраняем её, а не «временно маскируем проблему».
+            <span className="font-bold text-foreground">texnousta.uz</span> — это профессиональный ремонт {applianceTypeGenitive} в Ташкенте <span className="font-bold text-foreground">на дому</span>, без лишних слов, затягиваний и навязанных услуг. Мы приезжаем, <span className="font-bold text-foreground">находим реальную причину поломки</span> и устраняем её, а не «временно маскируем проблему».
           </motion.p>
 
           {/* Problems Grid */}

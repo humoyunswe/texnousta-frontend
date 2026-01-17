@@ -9,9 +9,15 @@ import { useRef } from "react";
 
 interface HomeRepairSectionProps {
   image?: string;
+  title?: string;
+  altText?: string;
 }
 
-export function HomeRepairSection({ image = "/images/hero/washin-machine.png" }: HomeRepairSectionProps) {
+export function HomeRepairSection({ 
+  image = "/images/hero/washin-machine.png",
+  title = "Ремонт стиральных машин на дому",
+  altText = "Ремонт стиральной машины на дому"
+}: HomeRepairSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -35,7 +41,7 @@ export function HomeRepairSection({ image = "/images/hero/washin-machine.png" }:
               УДОБНО
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-8">
-              Ремонт стиральных машин на дому
+              {title}
             </h2>
 
             <div className="mb-8">
@@ -80,7 +86,7 @@ export function HomeRepairSection({ image = "/images/hero/washin-machine.png" }:
             <div className="aspect-square rounded-3xl border border-border overflow-hidden shadow-lg">
               <img
                 src={image}
-                alt="Ремонт стиральной машины на дому"
+                alt={altText}
                 className="w-full h-full object-cover"
               />
             </div>
