@@ -66,7 +66,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-0">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-28">
       {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
         <img
@@ -80,7 +80,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
       </div>
 
       {/* Content Container */}
-      <div className="container relative z-10 mx-auto px-6 py-32 md:py-40">
+      <div className="container relative z-10 mx-auto px-6 py-16 md:py-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -105,11 +105,11 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           {/* Subheadline - Clean and clear */}
           <motion.p 
             variants={itemVariants}
-            className="text-2xl md:text-3xl font-medium mb-8 flex flex-wrap gap-2"
+            className="text-xl md:text-2xl font-medium text-foreground/80 mb-4 flex flex-wrap gap-2"
           >
-            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">Быстро.</span>
-            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">Честно.</span>
-            <span className="text-foreground bg-[#fa891a] px-3 py-1 rounded-lg">С гарантией</span>
+            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Быстро.</span>
+            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Честно.</span>
+            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">С гарантией</span>
           </motion.p>
 
           {/* Value proposition */}
@@ -117,7 +117,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
             variants={itemVariants}
             className="text-lg md:text-xl text-foreground mb-12 max-w-2xl leading-relaxed"
           >
-            {heroData.description}
+            <span className="font-bold">Стиральные машины</span>, <span className="font-bold">холодильники</span>, <span className="font-bold">кондиционеры</span>, <span className="font-bold">посудомоечные машины</span> и другая техника — <span className="font-bold">ремонт на дому</span> или в сервисе.
           </motion.p>
 
           
@@ -174,21 +174,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-2 bg-muted-foreground/50 rounded-full"
-          />
-        </div>
-      </motion.div>
+      
     </section>
   );
 }

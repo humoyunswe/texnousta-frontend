@@ -10,7 +10,16 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
 
-const testimonials = [
+interface Testimonial {
+  author: string;
+  text: string;
+}
+
+interface TestimonialsSectionProps {
+  testimonials?: Testimonial[];
+}
+
+const defaultTestimonials = [
   { author: "Алишер Каримов", text: "Отличный сервис! Холодильник отремонтировали за 2 часа. Мастер приехал вовремя." },
   { author: "Нигина Рахимова", text: "Стиральная машина перестала сливать воду. К обеду мастер уже был. Починил быстро!" },
   { author: "Фаррух Усманов", text: "Ремонтировал посудомоечную машину. Приехали даже в область! Работа выполнена качественно." },
@@ -19,7 +28,7 @@ const testimonials = [
   { author: "Малика Турсунова", text: "Кондиционер не охлаждал. Мастера приехали быстро, заправили фреон. Работает!" },
 ];
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ testimonials = defaultTestimonials }: TestimonialsSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 

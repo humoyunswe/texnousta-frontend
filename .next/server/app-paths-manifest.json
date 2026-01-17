@@ -1,7 +1,4 @@
 {
   "/services/washing-machines/page": "app/services/washing-machines/page.js",
-  "/services/dishwashers/page": "app/services/dishwashers/page.js",
-  "/services/refrigerators/page": "app/services/refrigerators/page.js",
-  "/services/air-conditioners/page": "app/services/air-conditioners/page.js",
   "/page": "app/page.js"
 }

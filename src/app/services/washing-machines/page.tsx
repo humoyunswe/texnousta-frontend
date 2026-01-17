@@ -1,38 +1,76 @@
+'use client'
+
 import { Header } from "@/components/sections/header"
-import { HeroSection } from "@/components/sections/hero"
-import { WhatWeRepairSection } from "@/components/sections/what-we-repair"
-import { WhyChooseUsSection } from "@/components/sections/why-choose-us"
-import { HowWeWorkSection } from "@/components/sections/how-we-work"
+import { ServiceHero } from "@/components/service-sections/service-hero"
+import { WhyUsService } from "@/components/service-sections/why-us-service"
+import { HomeRepairSection } from "@/components/service-sections/home-repair-section"
+import { WhatWeRepairPricing } from "@/components/service-sections/what-we-repair-pricing"
+import { HowToOrderSection } from "@/components/service-sections/how-to-order"
 import { ServiceAreaSection } from "@/components/sections/service-area"
-import { TestimonialsSection } from "@/components/sections/testimonials"
-import { FAQSection } from "@/components/sections/faq"
+import { ServiceFAQ } from "@/components/service-sections/service-faq"
 import { CTASection } from "@/components/sections/cta"
 import { Footer } from "@/components/sections/footer"
+import { 
+  Zap, 
+  Droplets, 
+  Volume2, 
+  RotateCcw, 
+  AlertCircle,
+  Clock
+} from "lucide-react"
 
-export const metadata = {
-  title: 'Ремонт стиральных машин в Ташкенте | TexnoUsta',
-  description: 'Профессиональный ремонт стиральных машин любых моделей и брендов. Выезд мастера в день обращения. Гарантия на все работы.',
+const washingMachineData = {
+  hero: {
+    badge: "90% ремонтов в день обращения",
+    title: "Ремонт стиральных<br />машин в Ташкенте",
+    subtitle: "Быстро. Надёжно. С гарантией",
+    description: "Когда стиральная машина выходит из строя — важно одно: чтобы её починили с первого раза.",
+    image: "/images/hero/image.png",
+    problems: [
+      { icon: Zap, text: "Стиральная машина не включается" },
+      { icon: Droplets, text: "Не набирает или не сливает воду" },
+      { icon: Volume2, text: "Сильно шумит или вибрирует" },
+      { icon: RotateCcw, text: "Не отжимает бельё" },
+      { icon: Droplets, text: "Протекает" },
+      { icon: AlertCircle, text: "Выдаёт ошибку на дисплее" },
+      { icon: Clock, text: "Останавливается во время стирки" },
+    ]
+  },
+  faqs: [
+    { 
+      question: "Сколько стоит ремонт стиральной машины?", 
+      answer: "Стоимость зависит от характера поломки и необходимости замены деталей. Точную цену мастер назовёт после диагностики, до начала работ." 
+    },
+    { 
+      question: "Вы даёте гарантию на ремонт?", 
+      answer: "Да, на все выполненные работы предоставляется гарантия до 12 месяцев. Если проблема повторится — исправим бесплатно." 
+    },
+    { 
+      question: "Ремонт проводится на дому?", 
+      answer: "Да, в 90% случаев ремонт проводится на месте. Вывоз техники требуется только в сложных случаях." 
+    },
+    { 
+      question: "Как быстро приедет мастер?", 
+      answer: "Обычно мастер приезжает в день обращения. По Ташкенту — в течение 1-2 часов после заявки." 
+    },
+    { 
+      question: "Какие бренды стиральных машин вы ремонтируете?", 
+      answer: "Мы ремонтируем все популярные бренды: Samsung, LG, Bosch, Indesit, Ariston, Beko, Haier и другие." 
+    },
+  ]
 }
 
 export default function WashingMachinesPage() {
-  const heroData = {
-    badge: "Ремонт стиральных машин",
-    title: "Профессиональный ремонт стиральных машин",
-    subtitle: "Любые модели и бренды",
-    description: "Ремонтируем стиральные машины всех типов: с вертикальной и фронтальной загрузкой, автоматические и полуавтоматические. Устраняем любые неисправности быстро и качественно.",
-    image: "/images/hero/image.png"
-  }
-
   return (
     <main className="min-h-screen">
       <Header />
-      <HeroSection data={heroData} />
-      <WhatWeRepairSection />
-      <WhyChooseUsSection />
-      <HowWeWorkSection />
+      <ServiceHero {...washingMachineData.hero} />
+      <WhyUsService />
+      <HomeRepairSection />
+      <WhatWeRepairPricing />
+      <HowToOrderSection />
       <ServiceAreaSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <ServiceFAQ faqs={washingMachineData.faqs} />
       <CTASection />
       <Footer />
     </main>

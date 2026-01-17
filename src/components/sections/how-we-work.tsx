@@ -15,28 +15,23 @@ import { Phone, MessageCircle, Clock, Wrench, CheckCircle, ArrowRight } from "lu
 const steps = [
   {
     icon: Phone,
-    title: "Оставляете заявку",
+    title: "Оставьте заявку или позвоните",
     description: "Звонок или форма на сайте",
   },
   {
     icon: MessageCircle,
-    title: "Консультация",
-    description: "Уточняем проблему по телефону",
+    title: "Опишите проблему",
+    description: "Консультация по телефону",
   },
   {
     icon: Clock,
-    title: "Приезд мастера",
-    description: "В удобное для вас время",
-  },
-  {
-    icon: Wrench,
-    title: "Диагностика",
-    description: "Определяем причину и стоимость",
+    title: "Мастер приедет в удобное время",
+    description: "Выбираете удобное для вас время",
   },
   {
     icon: CheckCircle,
-    title: "Ремонт и гарантия",
-    description: "Качественно и с ответственностью",
+    title: "Диагностика → ремонт → результат",
+    description: "Качественно и с гарантией",
   },
 ];
 
@@ -97,49 +92,38 @@ export function HowWeWorkSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6"
         >
           {steps.map((step, index) => {
             const Icon = step.icon;
-            const isLast = index === steps.length - 1;
             
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative text-center lg:text-left"
+                className="relative text-center"
               >
-                {/* Step Number & Icon */}
-                <div className="flex flex-col items-center lg:items-start mb-6">
-                  {/* Number Badge */}
-                  <div className="relative mb-4">
-                    <div className="w-16 h-16 flex items-center justify-center bg-secondary rounded-2xl">
-                      <Icon className="w-7 h-7 text-foreground" strokeWidth={1.5} />
-                    </div>
-                    {/* Step number */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center bg-foreground text-background text-caption font-semibold rounded-full">
-                      {index + 1}
-                    </div>
+                {/* Step Number */}
+                <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold z-10">
+                  {index + 1}
+                </div>
+                
+                <div className="p-6 bg-secondary/50 rounded-3xl border border-border h-full">
+                  <div className="w-14 h-14 bg-background rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Icon className="w-7 h-7 text-foreground" />
                   </div>
-
-                  {/* Arrow connector (hidden on mobile, last item) */}
-                  {!isLast && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full">
-                      <div className="flex items-center justify-center w-full px-2">
-                        <div className="flex-1 h-px bg-border" />
-                        <ArrowRight className="w-4 h-4 text-muted-foreground mx-1" />
-                      </div>
-                    </div>
-                  )}
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
                 </div>
 
-                {/* Content */}
-                <h3 className="text-heading-sm font-semibold text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-body-sm text-muted-foreground">
-                  {step.description}
-                </p>
+                {/* Connector line */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-border" />
+                )}
               </motion.div>
             );
           })}
