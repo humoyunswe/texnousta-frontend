@@ -61,7 +61,7 @@ export function ServiceHero({
   };
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-28">
+    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-background pt-28 md:pt-20">
       {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
         <img
@@ -75,7 +75,7 @@ export function ServiceHero({
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-6 py-16 md:py-20">
+      <div className="container relative z-10 mx-auto px-6 py-12 md:py-14">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -83,8 +83,8 @@ export function ServiceHero({
           className="max-w-3xl"
         >
           {/* Badge */}
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-caption font-semibold tracking-wide uppercase rounded-full">
+          <motion.div variants={itemVariants} className="mb-4">
+            <span className="inline-flex items-center px-3 py-1.5 bg-primary text-primary-foreground text-xs font-semibold tracking-wide uppercase rounded-full">
               {badge}
             </span>
           </motion.div>
@@ -92,24 +92,24 @@ export function ServiceHero({
           {/* Title */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4 leading-tight"
             dangerouslySetInnerHTML={{ __html: title }}
           />
 
           {/* Subtitle */}
           <motion.p 
             variants={itemVariants}
-            className="text-xl md:text-2xl font-medium text-foreground/80 mb-4 flex flex-wrap gap-2"
+            className="text-base md:text-lg font-medium text-foreground/80 mb-4 flex flex-wrap gap-2"
           >
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Быстро.</span>
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Надёжно.</span>
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">С гарантией</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white rounded-full text-sm md:text-base">Быстро.</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white rounded-full text-sm md:text-base">Надёжно.</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white rounded-full text-sm md:text-base">С гарантией</span>
           </motion.p>
 
           {/* Description */}
           <motion.p 
             variants={itemVariants}
-            className="text-base md:text-lg text-muted-foreground mb-4 max-w-xl leading-relaxed"
+            className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl leading-relaxed"
           >
             {description}
           </motion.p>
@@ -117,7 +117,7 @@ export function ServiceHero({
           {/* Additional Description */}
           <motion.p 
             variants={itemVariants}
-            className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed"
+            className="text-sm md:text-base text-muted-foreground mb-6 max-w-xl leading-relaxed"
           >
             <span className="font-bold text-foreground">texnousta.uz</span> — это профессиональный ремонт {applianceTypeGenitive} в Ташкенте <span className="font-bold text-foreground">на дому</span>, без лишних слов, затягиваний и навязанных услуг. Мы приезжаем, <span className="font-bold text-foreground">находим реальную причину поломки</span> и устраняем её, а не «временно маскируем проблему».
           </motion.p>
@@ -157,9 +157,9 @@ export function ServiceHero({
                       {/* Call Button */}
                       <a
                         href="tel:+998935960055"
-                        className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-full text-lg font-semibold hover:bg-gray-900 transition-colors shadow-lg"
+                        className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-full text-base font-semibold hover:bg-gray-900 transition-colors shadow-lg"
                       >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
                         Вызвать мастера сейчас
@@ -168,10 +168,10 @@ export function ServiceHero({
                       {/* Form Link Button */}
                       <a
                         href="#service-area-form"
-                        className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg border-2 border-black"
+                        className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black rounded-full text-base font-semibold hover:bg-gray-100 transition-colors shadow-lg border-2 border-black"
                       >
                         Бесплатная консультация
-                        <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </a>

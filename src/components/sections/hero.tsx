@@ -66,7 +66,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
   };
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background pt-32 md:pt-28">
+    <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-background pt-28 md:pt-20">
       {/* Background Image with Monochrome Overlay */}
       <div className="absolute inset-0">
         <img
@@ -80,7 +80,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
       </div>
 
       {/* Content Container */}
-      <div className="container relative z-10 mx-auto px-6 py-16 md:py-20">
+      <div className="container relative z-10 mx-auto px-6 py-12 md:py-14">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -88,8 +88,8 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           className="max-w-3xl"
         >
           {/* Badge - Premium label */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground text-caption font-semibold tracking-wide uppercase rounded-full">
+          <motion.div variants={itemVariants} className="mb-6">
+            <span className="inline-flex items-center px-3 py-1.5 bg-primary text-primary-foreground text-xs font-semibold tracking-wide uppercase rounded-full">
               {heroData.badge || "Выезд мастера в день обращения"}
             </span>
           </motion.div>
@@ -97,7 +97,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           {/* Main Headline - Impactful typography */}
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+            className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-tight"
           >
             {heroData.title}
           </motion.h1>
@@ -105,17 +105,17 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           {/* Subheadline - Clean and clear */}
           <motion.p 
             variants={itemVariants}
-            className="text-xl md:text-2xl font-medium text-foreground/80 mb-4 flex flex-wrap gap-2"
+            className="text-base md:text-lg font-medium text-foreground/80 mb-3 flex flex-wrap gap-2"
           >
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Быстро.</span>
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">Честно.</span>
-            <span className="inline-block px-4 py-1 bg-[#fa891a] text-white rounded-full">С гарантией</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white text-sm rounded-full">Быстро.</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white text-sm rounded-full">Честно.</span>
+            <span className="inline-block px-3 py-1 bg-[#fa891a] text-white text-sm rounded-full">С гарантией</span>
           </motion.p>
 
           {/* Value proposition */}
           <motion.p 
             variants={itemVariants}
-            className="text-lg md:text-xl text-foreground mb-12 max-w-2xl leading-relaxed"
+            className="text-sm md:text-base text-foreground mb-8 max-w-2xl leading-relaxed"
           >
             <span className="font-bold">Стиральные машины</span>, <span className="font-bold">холодильники</span>, <span className="font-bold">кондиционеры</span>, <span className="font-bold">посудомоечные машины</span> и другая техника — <span className="font-bold">ремонт на дому</span> или в сервисе.
           </motion.p>
@@ -125,7 +125,7 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           {/* Feature Pills - Minimal indicators */}
           <motion.div 
             variants={itemVariants}
-            className="flex flex-wrap gap-4 mb-12"
+            className="flex flex-wrap gap-2 mb-8"
           >
             {[
               "Опытные мастера",
@@ -135,9 +135,9 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
             ].map((feature) => (
               <span
                 key={feature}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-sm md:text-base rounded-full"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-xs md:text-sm rounded-full"
               >
-                <span className="w-1.5 h-1.5 bg-foreground rounded-full" />
+                <span className="w-1 h-1 bg-foreground rounded-full" />
                 {feature}
               </span>
             ))}
@@ -146,14 +146,14 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 max-w-2xl"
+            className="flex flex-col sm:flex-row gap-3 max-w-2xl"
           >
             {/* Call Button */}
             <a
               href="tel:+998935960055"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-900 text-white rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full text-base font-semibold hover:bg-gray-800 transition-colors shadow-lg"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               Вызвать мастера сейчас
@@ -162,10 +162,10 @@ export function HeroSection({ data }: HeroSectionProps = {}) {
             {/* Form Link Button */}
             <a
               href="#service-area-form"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg border-2 border-gray-900"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-full text-base font-semibold hover:bg-gray-100 transition-colors shadow-lg border-2 border-gray-900"
             >
               Бесплатная консультация
-              <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>
